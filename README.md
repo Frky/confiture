@@ -70,9 +70,9 @@ Une fois l'objet Confiture créé, on peut tester des fichiers de configuration 
 
 ```python
 # Simple test
-conf.check("examples/config/blueberry_ok.py")
+conf.check("examples/config/blueberry_ok.yaml")
 # Test et récupération du contenu du fichier sous forme de dictionnaire
-config = conf.check_and_get("examples/config/blueberry_ok.py")
+config = conf.check_and_get("examples/config/blueberry_ok.yaml")
 ```
 
 Si le fichier de configuration n'est pas conforme au fichier de template, une exception de type `ConfigFileError` est levée.
