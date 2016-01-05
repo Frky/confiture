@@ -52,10 +52,10 @@ class Confiture(object):
             with open(config_path, 'r') as ymlfile:
                 self.config = yaml.load(ymlfile)
         except IOError:
-            raise ConfigFileError("*** File {0} not found -- aborting".format(self.__config_file))
-        self.__check_required_fields(self.__tpl, config)
+            raise ConfigFileError("*** File {0} not found -- aborting".format(config_path))
+        self.__check_required_fields(self.__tpl, self.config)
 
 
     def check_and_get(self, config_path):
-        self.check()
+        self.check(config_path)
         return self.config
