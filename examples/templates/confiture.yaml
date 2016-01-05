@@ -1,0 +1,12 @@
+general:
+    name:   ""
+    flavor: ""
+    year:   ""
+
+recipe:
+    fruit:
+        name: ""
+        quantity: ""
+    sugar:
+        quantity: ""
+

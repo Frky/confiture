@@ -1,0 +1,14 @@
+general:
+    name: "Bonne Maman"
+    flavor: "blueberry"
+    year: "2016"
+
+recipe:
+    fruit:
+        name: "blueberry"
+        quantity: "500g"
+    sugar: 
+        quantity: "350g"
+    water:
+        quantity: "15cl"
+
