@@ -1,5 +1,4 @@
-#-*- coding: utf-8 -*-
-
+# -*- coding: utf-8 -*-
 
 import yaml
 
@@ -9,6 +8,7 @@ class ConfigFileError(Exception):
         self.message = message
         super(ConfigFileError, self).__init__(message)
 
+
 class Confiture(object):
 
     def __init__(self, tpl_file=None):
@@ -17,17 +17,14 @@ class Confiture(object):
         self.__parse()
         self.config = None
 
-
     @property
     def tpl_file(self):
         return self._tpl_file
-
 
     @tpl_file.setter
     def tpl_file(self, path):
         self._tpl_file = path
         self.__parse()
-
 
     def __parse(self):
         try:
@@ -36,7 +33,6 @@ class Confiture(object):
         except (IOError, yaml.error.YAMLError):
             raise ConfigFileError("File \"{0}\" not found -- aborting".format(self._tpl_file))
 
-
     def __check_required_fields(self, tpl, config):
         for section in tpl.keys():
             if config is None or section not in config.keys():
@@ -44,7 +40,6 @@ class Confiture(object):
             field = tpl[section]
             if isinstance(field, dict):
                 self.__check_required_fields(field, config[section])
-
 
     def check(self, config_path):
         if self.__tpl is None:
@@ -56,8 +51,6 @@ class Confiture(object):
             raise ConfigFileError("File \"{0}\" not found -- aborting".format(config_path))
         self.__check_required_fields(self.__tpl, self.config)
 
-
     def check_and_get(self, config_path):
         self.check(config_path)
         return self.config
-
