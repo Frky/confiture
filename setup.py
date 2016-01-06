@@ -8,7 +8,7 @@ with open("README.rst", 'r') as f:
 
 setup(
         name='spread-confiture',
-        version="0.17.1rc1",
+        version="0.17.1rc2",
         description="A checker for required fields in yaml files",
         long_description=desc,
         url="https://github.com/Frky/confiture",
