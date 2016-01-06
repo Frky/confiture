@@ -54,7 +54,6 @@ class Confiture(object):
                 self.config = yaml.load(ymlfile)
         except (IOError, yaml.error.YAMLError):
             raise ConfigFileError("File \"{0}\" not found -- aborting".format(config_path))
-        print(self.config)
         self.__check_required_fields(self.__tpl, self.config)
 
 
