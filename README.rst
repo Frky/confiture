@@ -28,13 +28,11 @@ Vraiment ? - Non.
 
     pip install confiture
 
-Vraiment ? - Non.
+Vraiment ? - Non. Le nom ``confiture`` était déjà pris.
 
 .. code:: bash
 
-    git clone git@github.com:Frky/confiture.git 
-    cd confiture
-    pip install -r requirements.txt
+    pip install spread-confiture
 
 Vraiment ? - Bah oui.
 
@@ -134,22 +132,22 @@ Output
 FAQ
 ---
 
-Comment avez-vous eu l'idée de faire (de la) Confiture ?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Comment avez-vous eu l'idée de faire (de la) Confiture ?**
 
 *C'était un matin maladroit de septembre, au petit déjeuner. Au moment
-précis où j'ai commencé à me faire une tartine de Nutella.* ####
-Pourquoi une documentation ? *Parce qu'un projet sans documentation,
-c'est comme une confiture sans banane.*
+précis où j'ai commencé à me faire une tartine de Nutella.*
 
-Pourquoi une documentation aussi longue ?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Pourquoi une documentation ?**
+
+*Parce qu'un projet sans documentation, c'est comme une confiture sans
+banane.*
+
+**Pourquoi une documentation aussi longue ?**
 
 *Parce que la documentation c'est comme la banane dans la confiture,
 plus il y en a mieux c'est.*
 
-Pourquoi une documentation aussi longue pour un code aussi court ?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Pourquoi une documentation aussi longue pour un code aussi court ?**
 
 *Parce que maintenant, enfin, je peux dire que j'ai écrit UNE FOIS dans
 ma vie une documentation plus longue que le projet lui-même !*
