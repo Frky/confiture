@@ -7,7 +7,7 @@ import yaml
 class ConfigFileError(Exception):
     def __init__(self, message):
         self.message = message
-
+        super(ConfigFileError, self).__init__(message)
 
 class Confiture(object):
 
@@ -34,13 +34,13 @@ class Confiture(object):
             with open(self._tpl_file, 'r') as ymlfile:
                 self.__tpl = yaml.load(ymlfile)
         except (IOError, yaml.error.YAMLError):
-            raise ConfigFileError("*** File {0} not found -- aborting".format(self._tpl_file))
+            raise ConfigFileError("File \"{0}\" not found -- aborting".format(self._tpl_file))
 
 
     def __check_required_fields(self, tpl, config):
         for section in tpl.keys():
-            if section not in config.keys():
-                raise ConfigFileError("*** {0} field not found -- aborting".format(section))
+            if config is None or section not in config.keys():
+                raise ConfigFileError("\"{0}\" field not found -- aborting".format(section))
             field = tpl[section]
             if isinstance(field, dict):
                 self.__check_required_fields(field, config[section])
@@ -48,15 +48,17 @@ class Confiture(object):
 
     def check(self, config_path):
         if self.__tpl is None:
-            raise ConfigFileError("*** you must load a template file first -- aborting")
+            raise ConfigFileError("You must load a template file first -- aborting")
         try:
             with open(config_path, 'r') as ymlfile:
                 self.config = yaml.load(ymlfile)
         except (IOError, yaml.error.YAMLError):
-            raise ConfigFileError("*** File {0} not found -- aborting".format(config_path))
+            raise ConfigFileError("File \"{0}\" not found -- aborting".format(config_path))
+        print(self.config)
         self.__check_required_fields(self.__tpl, self.config)
 
 
     def check_and_get(self, config_path):
         self.check(config_path)
         return self.config
+
