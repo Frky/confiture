@@ -24,4 +24,6 @@ setup(
         keywords="yaml configuration config required fields template",
         packages=find_packages(),
         install_requires=['pyyaml'],
+        setup_requires=['pytest-runner'],
+        tests_require=['pytest'],
     )
