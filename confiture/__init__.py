@@ -29,7 +29,7 @@ class Confiture(object):
     def __parse(self):
         try:
             with open(self._tpl_file, 'r') as ymlfile:
-                self.__tpl = yaml.load(ymlfile)
+                self.__tpl = yaml.safe_load(ymlfile)
             # In case the parsed file was empty
             if self.__tpl is None:
                 self.__tpl = dict()
@@ -49,7 +49,7 @@ class Confiture(object):
             raise ConfigFileError("You must load a template file first -- aborting")
         try:
             with open(config_path, 'r') as ymlfile:
-                self.config = yaml.load(ymlfile)
+                self.config = yaml.safe_load(ymlfile)
         except (IOError, yaml.error.YAMLError):
             raise ConfigFileError("File \"{0}\" not found -- aborting".format(config_path))
         self.__check_required_fields(self.__tpl, self.config)
