@@ -30,6 +30,9 @@ class Confiture(object):
         try:
             with open(self._tpl_file, 'r') as ymlfile:
                 self.__tpl = yaml.load(ymlfile)
+            # In case the parsed file was empty
+            if self.__tpl is None:
+                self.__tpl = dict()
         except (IOError, yaml.error.YAMLError):
             raise ConfigFileError("File \"{0}\" not found -- aborting".format(self._tpl_file))
 
