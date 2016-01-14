@@ -1,19 +1,19 @@
 Confiture
 =========
 
-    Eh oui, confiture ça commence comme configuration.
+    Funny fact: confiture looks like configure.
 
-Confiture, c'est quoi ?
+Confiture, what's that?
 -----------------------
 
-[STRIKEOUT:La confiture est une confiserie obtenue, le plus souvent, en
-faisant cuire dans une bassine à confiture certains fruits,
-éventuellement dénoyautés et coupés en morceaux, avec un poids
-équivalent de sucre.]
+[STRIKEOUT:Jam typically contains both the juice and flesh of a fruit or
+vegetable, although some cookbooks define it as a cooked and jelled
+puree. The term "jam" refers to a product made of whole fruit cut into
+pieces or crushed, then heated with water and sugar to activate its
+pectin before being put into containers.]
 
-Confiture, c'est un bout de code qui permet de tester un fichier de
-configuration ``yaml``. Par tester, on entend vérifier que des champs
-requis sont bien présents.
+Confiture is a small piece of code to test a ``yaml`` configuration
+file. By test we mean check that some required fields are indeed set.
 
 Installation
 ------------
@@ -22,34 +22,34 @@ Installation
 
     spread confiture
 
-Vraiment ? - Non.
+Oh really? - No.
 
 ::
 
     pip install confiture
 
-Vraiment ? - Non. Le nom ``confiture`` était déjà pris.
+Oh really? - Nope, pip name ``confiture`` was already used.
 
 .. code:: bash
 
     pip install spread-confiture
 
-Vraiment ? - Bah oui.
+Oh really? - Hell yeah.
 
 Requirements
 ~~~~~~~~~~~~
 
-Ce projet nécessite ``pyyaml``.
+This project requires ``pyyaml`` to parse ``yaml`` files.
 
-Utilisation
------------
+Usage
+-----
 
-Fichier de template
-~~~~~~~~~~~~~~~~~~~
+Template file
+~~~~~~~~~~~~~
 
-Un fichier de template est un fichier qui définit les champs que l'on
-veut vérifier en parsant des fichiers de configuration. Il s'écrit aussi
-au format ``yaml``, sous la forme suivante :
+A template file is a file that describes the fields that we want to
+check when parsing a configuration file. It is also written in ``yaml``,
+with the following scheme:
 
 .. code:: yaml
 
@@ -61,14 +61,15 @@ au format ``yaml``, sous la forme suivante :
 
     bar: ""
 
-Un fichier de configuration sera conforme au fichier de template si
-chacun des champs spécifiés par le template sont présents. Ça n'empêche
-pas le fichier de configuration de posséder des champs supplémentaires.
+A configuration file is consistant relatively to the template file if
+every required field specified by the template are set. Note that the
+configuration can also set other fields that are not specified by the
+template.
 
-Création d'un objet Confiture
+Create a ``Confiture`` object
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pour créer un objet Confiture selon un template donné :
+To create a ``Confiture`` object relatively to a given template file:
 
 .. code:: python
 
@@ -76,11 +77,11 @@ Pour créer un objet Confiture selon un template donné :
     # conf pour confiture ou configration ?
     conf = Confiture("examples/templates/confiture.yaml")
 
-Parsing d'un fichier de configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Parse a configuration file
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Une fois l'objet Confiture créé, on peut tester des fichiers de
-configuration yaml :
+Once the ``Confiture`` object is created, we can test ``yaml``
+configuration files:
 
 .. code:: python
 
@@ -89,10 +90,10 @@ configuration yaml :
     # Test et récupération du contenu du fichier sous forme de dictionnaire
     config = conf.check_and_get("examples/config/blueberry_ok.yaml")
 
-Si le fichier de configuration n'est pas conforme au fichier de
-template, une exception de type ``ConfigFileError`` est levée.
+If the configuration file is not consistant with the template, a
+``ConfigFileError`` exception is raised.
 
-Exemple
+Example
 -------
 
 Code
@@ -132,22 +133,22 @@ Output
 FAQ
 ---
 
-**Comment avez-vous eu l'idée de faire (de la) Confiture ?**
+**How did you get the idea to do (some) Confiture?**
 
-*C'était un matin maladroit de septembre, au petit déjeuner. Au moment
-précis où j'ai commencé à me faire une tartine de Nutella.*
+*It was a forbidden morning of September, breakfast time. At the exact
+moment when I started speading Nutella on my toast...*
 
-**Pourquoi une documentation ?**
+**Why a documentation?**
 
-*Parce qu'un projet sans documentation, c'est comme une confiture sans
-banane.*
+*Because a project without documentation is like a Confiture without
+bananas.*
 
-**Pourquoi une documentation aussi longue ?**
+**Why a documentation THAT long?**
 
-*Parce que la documentation c'est comme la banane dans la confiture,
-plus il y en a mieux c'est.*
+*Because documentation is like banana in Confiture, the more there is
+the better it tastes.*
 
-**Pourquoi une documentation aussi longue pour un code aussi court ?**
+**Why a documentation THAT long for a project this simple?**
 
-*Parce que maintenant, enfin, je peux dire que j'ai écrit UNE FOIS dans
-ma vie une documentation plus longue que le projet lui-même !*
+*Because now I can say that once in my life I wrote a documentation
+longer than the code itself.*
