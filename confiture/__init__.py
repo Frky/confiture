@@ -51,7 +51,10 @@ class Confiture(object):
             and turning it into a python list
         """
         if not isinstance(config, dict):
-            return str(config).split(self.list_sep)
+            if self.list_sep in str(config):
+                return str(config).split(self.list_sep)
+            else:
+                return config
         else:
             for k in config:
                 config[k] = self.list_parse(config[k])
