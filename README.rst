@@ -1,7 +1,7 @@
 Confiture
 =========
 
-    Funny fact: confiture looks like configure.
+    Fun fact: confiture looks like configure.
 
 Confiture, what's that?
 -----------------------
