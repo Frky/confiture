@@ -11,11 +11,12 @@ class ConfigFileError(Exception):
 
 class Confiture(object):
 
-    def __init__(self, tpl_file=None):
+    def __init__(self, tpl_file=None, list_sep="|"):
         self._tpl_file = tpl_file
         self.__tpl = None
         self.__parse()
         self.config = None
+        self.list_sep = list_sep
 
     @property
     def tpl_file(self):
@@ -43,13 +44,29 @@ class Confiture(object):
             field = tpl[section]
             if isinstance(field, dict):
                 self.__check_required_fields(field, config[section])
-
+    
+    def list_parse(self, config):
+        """
+            Parse recursively the config file searching for a string describing a list
+            and turning it into a python list
+        """
+        if not isinstance(config, dict):
+            if self.list_sep in str(config):
+                return str(config).split(self.list_sep)
+            else:
+                return config
+        else:
+            for k in config:
+                config[k] = self.list_parse(config[k])
+            return config
+        
     def check(self, config_path):
         if self.__tpl is None:
             raise ConfigFileError("You must load a template file first -- aborting")
         try:
             with open(config_path, 'r') as ymlfile:
                 self.config = yaml.safe_load(ymlfile)
+                self.config = self.list_parse(self.config)
         except (IOError, yaml.error.YAMLError):
             raise ConfigFileError("File \"{0}\" not found -- aborting".format(config_path))
         self.__check_required_fields(self.__tpl, self.config)
